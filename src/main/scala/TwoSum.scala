@@ -21,7 +21,7 @@ object TwoSum {
     val map = new scala.collection.mutable.HashMap[Int,Int]
     for ( i <- 0 until nums.length ) {
       if ( map.contains( target - nums(i))){
-        return Array(i, map(target - nums(i)))
+        return Array(map(target - nums(i)),i)
       }else{
         map(nums(i)) = i
       }
