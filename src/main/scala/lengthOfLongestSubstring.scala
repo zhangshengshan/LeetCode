@@ -21,19 +21,16 @@ object lengthOfLongestSubstring {
     var i = 0
     var j = 0
     while (  i < s.length && j < s.length ){
-      if (  set.contains(s(j)) ) {
-        set.remove(s(i))
-        i = i + 1
+      if ( set.contains(s(j))) {
+        i = math.max(set.get(s(j)).get + 1,i)
       }
-      else {
-        set(s(j)) = 1
-        if ( j - i + 1 > max) max = j - i + 1
-        j = j + 1
-      }
+      max = math.max( j-i+1, max)
+      set(s(j)) = j
+      j = j + 1
     }
     max
   }
   def main(args: Array[String]): Unit = {
-    println(lengthOfLongestSubstring1("pwwkew",2 ))
+    println(lengthOfLongestSubstring1("tmmzuxt",2 ))
   }
 }
