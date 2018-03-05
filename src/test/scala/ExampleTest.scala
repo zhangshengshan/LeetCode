@@ -1,27 +1,19 @@
+import org.scalatest.Assertions._
 import collection.mutable.Stack
 import org.scalatest._
 
 class ExampleSpec extends FlatSpec with Matchers {
 
-  "A Stack" should "pop values in last-in-first-out order" in {
-    val stack = new Stack[Int]
-    stack.push(1)
-    stack.push(2)
-    stack.pop() should be (2)
-    stack.pop() should be (1)
-  }
-
-  it should "throw NoSuchElementException if an empty stack is popped" in {
-    val emptyStack = new Stack[Int]
-    a [NoSuchElementException] should be thrownBy {
-      emptyStack.pop()
-    }
-  }
-
-
-  "hello World" should "aasdfasdf" in {
-
+  "TwoSum brute force" should "TwoSum.twoSum" in {
     val a = TwoSum.twoSum(Array(1,2,3,4),5)
-    a should be (Array(4,3))
+    List(Array(2,1), Array(1,2), Array(3,0), Array(0,3)) should contain (a)
+  }
+  "TwoSum1 brute force" should "TwoSum.twoSum1" in {
+    val a = TwoSum.twoSum1(Array(1,2,3,4),5)
+    List(Array(2,1), Array(1,2), Array(3,0), Array(0,3)) should contain (a)
+  }
+  "TwoSum2 brute force" should "TwoSum.twoSum2" in {
+    val a = TwoSum.twoSum2(Array(1,2,3,4),5)
+    List(Array(2,1), Array(1,2), Array(3,0), Array(0,3)) should contain (a)
   }
 }
