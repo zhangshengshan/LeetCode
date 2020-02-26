@@ -1,11 +1,10 @@
 import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
 
 ThisBuild / resolvers ++= Seq(
-    
   Resolver.mavenLocal,
   Resolver.defaultLocal,
   "huaweicloud-maven" at  "https://repo.huaweicloud.com/repository/maven/",
-  "ALIYUN OSS" at  "http://maven.aliyun.com/nexus/content/groups/public/",
+  "ALIYUN OSS" at  "https://maven.aliyun.com/nexus/content/groups/public/",
   "Apache Development Snapshot Repository" at "https://repository.apache.org/content/repositories/snapshots/"
 )
 
