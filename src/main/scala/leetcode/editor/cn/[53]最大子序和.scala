@@ -14,7 +14,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-object Solution {
+object SSAAASolution {
     def maxSubArray(nums: Array[Int]): Int = {
       var max = Int.MinValue
       var currentSum = 0

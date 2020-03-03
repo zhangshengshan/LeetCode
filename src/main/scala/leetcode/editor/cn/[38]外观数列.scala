@@ -42,7 +42,7 @@ object Solution {
     var ret: String = ""
     while (i < str.size) {
       var time = 1;
-      j = i + 1/
+      j = i + 1
       while (j < str.size) {
         if (str(j) == str(i)) {
           time = time + 1
