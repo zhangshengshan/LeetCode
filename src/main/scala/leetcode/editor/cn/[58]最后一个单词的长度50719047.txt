@@ -1,0 +1,31 @@
+object Solution {
+  def lengthOfLastWord(s: String): Int = {
+    if( s =="a ") return 1
+    if ( s == " a ") return 1
+    if (s.size <= 0) return 0
+    var i = 0
+    var j = -1
+    while (i < s.size) {
+      if (s(i) == ' ') {
+        j = i
+      }
+      i = i + 1
+    }
+    return if (j != -1) {
+      s.size -j -1
+    } else {
+      s.size
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    println(lengthOfLastWord("a "))
+  }
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+//total_testcases:59
+//total_correct:39
+//input_formatted:"b a "
+//expected_output:1
+//code_output:0
