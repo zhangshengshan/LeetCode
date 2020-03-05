@@ -1,0 +1,16 @@
+object Solution {
+  def height(root: TreeNode):Int = {
+    if (root == null) return 0
+    return 1 + math.max(height(root.left), height(root.right))
+  }
+
+  def isBalanced(root: TreeNode): Boolean = {
+    if (root == null) return true
+    return math.abs(height(root.left), height(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
+  }
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+//total_correct:null
+//compile_error:Line 9: error: overloaded method value abs with alternatives: (in solution.scala)
