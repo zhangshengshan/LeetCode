@@ -17,8 +17,19 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def majorityElement(nums: Array[Int]): Int = {
-
+  def majorityElement(nums: Array[Int]): Int = {
+    import scala.collection.mutable.Map
+    var map = Map[Int, Int]()
+    for (item <- nums) {
+      if (map.contains(item))
+        map(item) = map(item) + 1
+      else
+        map(item) = 1
     }
+    val tuple: (Int, Int) = map.reduce((x1, x2) => if (x2._2 > x1._2) x2 else x1)
+    tuple._1
+
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

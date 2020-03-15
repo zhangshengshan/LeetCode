@@ -1,4 +1,5 @@
-//给定两个字符串 s 和 t，判断它们是否是同构的。 
+
+//给定两个字符串 s 和 t，判断它们是否是同构的。
 //
 // 如果 s 中的字符可以被替换得到 t ，那么这两个字符串是同构的。 
 //
@@ -27,8 +28,21 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def isIsomorphic(s: String, t: String): Boolean = {
-
+  def isIsomorphic(s: String, t: String): Boolean = {
+    val mymap = scala.collection.mutable.Map[Char, Char]()
+    val length: Int = s.length
+    for (i <- 0 until length) {
+      if (mymap.contains(s(i))) {
+        if (mymap(s(i)) != t(i)) {
+          return false
+        }
+      } else {
+        if (mymap.values.toList.contains(t(i))) return false
+        else mymap(s(i)) = t(i)
+      }
     }
+    return true
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)
