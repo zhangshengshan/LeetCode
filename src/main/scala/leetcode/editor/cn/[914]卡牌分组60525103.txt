@@ -1,0 +1,11 @@
+object Solution {
+  def hasGroupsSizeX(deck: Array[Int]): Boolean = {
+    val intToInt: Map[Int, Int] = deck.map(x => (x, 1)).groupBy(_._1).mapValues(x => x.length)
+    val value: Int = intToInt.minBy(_._2)._2
+    intToInt.forall(x => x._2 % value == 0)
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 3: error: type mismatch; (in solution.scala)

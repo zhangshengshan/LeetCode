@@ -1,0 +1,21 @@
+object Solution {
+    def prefixesDivBy5(A: Array[Int]): Array[Boolean] = {
+      import scala.collection.mutable.ArrayBuffer 
+      val myArrayBuffer = new ArrayBuffer[Boolean]()
+      var sum = 0 
+      for (i <- 0 to A.length - 1) {
+        sum = sum * 2 + A(i)
+        if(sum % 5 == 0 )
+          myArrayBuffer += true
+        else 
+          myArrayBuffer += false
+      }
+      return myArrayBuffer.toArray
+    }
+}
+
+//total_testcases:24
+//total_correct:7
+//input_formatted:[1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,0,0,0,0,1,1,0,1,0,0,0,1]
+//expected_output:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,true,true,true,false]
+//code_output:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,false,false,false,false]

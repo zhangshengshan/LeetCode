@@ -1,0 +1,21 @@
+object Solution {
+  def numMovesStones(a: Int, b: Int, c: Int): Array[Int] = {
+    val sorted: List[Int] = List(a, b, c).sorted
+    val max: Int = sorted(2) - sorted.head - 2
+    val min = (sorted(1) - sorted(0) > 1, sorted(2) - sorted(1) > 1) match {
+      case (true, true) => 2
+      case (true, false) => 1
+      case (false, true) => 1
+      case _ => 0
+    }
+
+    Array(min, max)
+  }
+}
+
+
+//total_testcases:187
+//total_correct:138
+//input_formatted:3, 5, 1
+//expected_output:[1,2]
+//code_output:[2,2]

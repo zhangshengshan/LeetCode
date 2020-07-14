@@ -1,0 +1,13 @@
+object Solution {
+  def surfaceArea(grid: Array[Array[Int]]): Int = {
+    val ret = grid.flatten.count(_ != 0) + grid.map(_.max).sum + grid.transpose.map(_.max).sum
+    2 * ret
+  }
+}
+
+
+//total_testcases:90
+//total_correct:20
+//input_formatted:[[1,1,1],[1,0,1],[1,1,1]]
+//expected_output:32
+//code_output:28

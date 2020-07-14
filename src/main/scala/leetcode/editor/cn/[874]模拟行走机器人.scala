@@ -1,13 +1,10 @@
-//机器人在一个无限大小的网格上行走，从点 (0, 0) 处开始出发，面向北方。该机器人可以接收以下三种类型的命令： 
-//
-// 
+
+//机器人在一个无限大小的网格上行走，从点 (0, 0) 处开始出发，面向北方。该机器人可以接收以下三种类型的命令：
 // -2：向左转 90 度 
 // -1：向右转 90 度 
 // 1 <= x <= 9：向前移动 x 个单位长度 
-// 
 //
 // 在网格上有一些格子被视为障碍物。 
-//
 // 第 i 个障碍物位于网格点 (obstacles[i][0], obstacles[i][1]) 
 //
 // 如果机器人试图走到障碍物上方，那么它将停留在障碍物的前一个网格方块上，但仍然可以继续该路线的其余部分。 
@@ -46,8 +43,54 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def robotSim(commands: Array[Int], obstacles: Array[Array[Int]]): Int = {
+  def updateDirection(direction: Int, command: Int): Int = {
+    if (command == -1) (direction + 1) % 4 else (direction + 3) % 4
+  }
+  def robotSim(commands: Array[Int], obstacles: Array[Array[Int]]): Int = {
+    var maxDistance = 0
+    val set: Set[String] = obstacles.map(x => x(0).toString + ":" + x(1).toString).toSet
+    val dir = Map[Int, (Int, Int)](
+      0 -> (0, 1),
+      1 -> (1, 0),
+      2 -> (0, -1),
+      3 -> (-1, 0)
+    )
+    val initPosition = (0, 0)
+    val initDir = 0
 
+    def updatePosition(p: (Int, Int), d: Int, c: Int): (Int, Int) = {
+      val (dx, dy) = dir(d)
+      var x = p._1
+      var y = p._2
+      import util.control.Breaks._
+      breakable {
+        for (i <- 0 until c) {
+          val newX = x + dx
+          val newY = y + dy
+          if (set.contains(newX.toString + ":" + newY.toString)) {
+            break
+          } else {
+            x = newX
+            y = newY
+          }
+        }
+      }
+      (x, y)
     }
+
+    val ret = commands.foldLeft(initPosition, initDir)((z: ((Int, Int), Int), c: Int) => {
+      c match {
+        case int: Int if List(-1, -2) contains int => (z._1, updateDirection(z._2, c))
+        case _ => {
+          val position = updatePosition(z._1, z._2, c)
+          val tmp = position._1 * position._1 + position._2 * position._2
+          maxDistance = math.max(tmp, maxDistance)
+          (position, z._2)
+        }
+      }
+    })
+    maxDistance
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

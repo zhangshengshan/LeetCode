@@ -41,8 +41,19 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def fib(N: Int): Int = {
+  def fib(N: Int): Int = {
+    var x = 0
+    var y = 1
+    if (N == 0) return x
+    if (N == 1) return y
 
+    for (N <- 2 to N) {
+      val tmp = y
+      y = x + y
+      x = tmp
     }
+    return y
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

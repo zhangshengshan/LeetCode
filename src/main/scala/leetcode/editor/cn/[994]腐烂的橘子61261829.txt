@@ -1,0 +1,53 @@
+object Solution {
+  def orangesRotting(grid: Array[Array[Int]]): Int = {
+    val mymap = scala.collection.mutable.Map[(Int, Int), Int]()
+    val rows = grid.length
+    val cols = grid(0).length
+    var num = 0
+
+    def adjustPoints(p: (Int, Int), rows: Int, cols: Int): List[(Int, Int)] = {
+      import scala.collection.mutable.ArrayBuffer
+      val myArrayBuffer = new ArrayBuffer[(Int, Int)]()
+      val x = p._1
+      val y = p._2
+      if (x - 1 >= 0 && grid(x - 1)(y) == 1) myArrayBuffer += (x - 1, y)
+      if (y - 1 >= 0 && grid(x)(y - 1) == 1) myArrayBuffer += (x, y - 1)
+      if (y + 1 < rows && grid(x)(y + 1) == 1) myArrayBuffer += (x, y + 1)
+      if (x + 1 < cols && grid(x + 1)(y) == 1) myArrayBuffer += (x + 1, y)
+      myArrayBuffer.toList
+    }
+
+    import scala.collection.mutable.Queue
+    val myqueue = new Queue[(Int, Int)]()
+    val seeds = for (i <- 0 to rows - 1; j <- 0 to cols - 1 if grid(i)(j) == 2) yield (i, j)
+
+    for (item <- seeds) {
+      myqueue.enqueue(item)
+    }
+
+    while (myqueue.nonEmpty) {
+      num += 1
+      val nodes = myqueue.dequeueAll(_ => true)
+      for (item <- nodes) {
+        if (!mymap.contains(item)) {
+          mymap(item) = 1
+          val adjNodes = adjustPoints(item)
+          for (adjNode <- adjNodes) {
+            if (!mymap.contains(adjNode)) {
+              myqueue.enqueue(adjNode)
+              mymap(adjNode) = 1
+            }
+          }
+        }
+      }
+    }
+
+    if (grid.forall(i => i.forall(x => x != 1))) return num
+    else -1
+
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 13: error: type mismatch; (in solution.scala)

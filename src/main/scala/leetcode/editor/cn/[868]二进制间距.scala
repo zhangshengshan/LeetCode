@@ -1,4 +1,5 @@
-//给定一个正整数 N，找到并返回 N 的二进制表示中两个连续的 1 之间的最长距离。 
+
+//给定一个正整数 N，找到并返回 N 的二进制表示中两个连续的 1 之间的最长距离。
 //
 // 如果没有两个连续的 1，返回 0 。 
 //
@@ -56,8 +57,15 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def binaryGap(N: Int): Int = {
-
+  def binaryGap(N: Int): Int = {
+    var max = Int.MinValue
+    val tuples = N.toBinaryString.zipWithIndex.filter(_._1 == '1')
+    if (tuples.length <= 1) return 0
+    for (i <- 1 to tuples.length - 1) {
+      max = math.max(max, tuples(i)._2 - tuples(i - 1)._2)
     }
+    return max
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

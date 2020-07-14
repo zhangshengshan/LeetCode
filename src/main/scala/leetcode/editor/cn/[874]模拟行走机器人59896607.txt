@@ -1,0 +1,66 @@
+object Solution {
+
+
+  def updateDirection(direction: Int, command: Int): Int = {
+    if (command == -1) (direction + 1) % 4 else (direction + 3) % 4
+  }
+
+  def robotSim(commands: Array[Int], obstacles: Array[Array[Int]]): Int = {
+    val dir = Map[Int, (Int, Int)](
+      0 -> (0, 1),
+      1 -> (1, 0),
+      2 -> (0, -1),
+      3 -> (-1, 0)
+    )
+    val tuples: Array[(Int, Int)] = obstacles.map(x => (x(0), x(1)))
+    val xLimits = tuples.groupBy(_._2).mapValues(_.map(_._1))
+    val yLimits = tuples.groupBy(_._1).mapValues(_.map(_._2))
+
+    val initDir = 0
+    val initPosition: (Int, Int) = (0, 0)
+
+    val ret = commands.foldLeft(initPosition, initDir)((z: ((Int, Int), Int), c: Int) => {
+      c match {
+        case -1 => (z._1, updateDirection(z._2, c))
+        case -2 => (z._1, updateDirection(z._2, c))
+        case _ => (updatePosition(z._1, z._2, c), z._2)
+      }
+    })
+
+    def updatePosition(position: (Int, Int), d: Int, c: Int): (Int, Int) = {
+      val tuple: (Int, Int) = dir(d)
+      val x = position._1 + tuple._1 * c
+      val y = position._2 + tuple._2 * c
+      d match {
+        case 0 => {
+          val ints: Array[Int] = yLimits(position._1).filter(_ > position._2)
+          val limit = if (ints.nonEmpty) ints.min else Int.MaxValue
+          (x, math.min(y, limit))
+        }
+        case 1 => {
+          val ints: Array[Int] = xLimits(position._2).filter(_ > position._1)
+          val limit = if (ints.nonEmpty) ints.min else Int.MaxValue
+          (math.min(x, limit), y)
+        }
+        case 2 => {
+          val ints: Array[Int] = yLimits(position._1).filter(_ < position._2)
+          val limit = if (ints.nonEmpty) ints.max else Int.MinValue
+          (x, math.max(y, limit))
+        }
+        case 3 => {
+          val ints: Array[Int] = xLimits(position._2).filter(_ < position._1)
+          val limit = if (ints.nonEmpty) ints.max else Int.MinValue
+          (math.max(x, limit), y)
+        }
+      }
+    }
+
+    val value: (Int, Int) = ret._1
+    value._1 * value._1 + value._2 * value._2
+  }
+
+}
+
+
+//total_correct:null
+//compile_error:Line 26: error: forward reference extends over definition of value ret (in solution.scala)

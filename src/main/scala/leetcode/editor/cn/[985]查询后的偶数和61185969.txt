@@ -1,0 +1,33 @@
+object Solution {
+
+  def isEven(in: Int): Boolean = {
+    in % 2 == 0
+  }
+
+  def sumEvenAfterQueries(A: Array[Int], queries: Array[Array[Int]]): Array[Int] = {
+    var initSum = A.filter(isEven).sum
+    import scala.collection.mutable.ArrayBuffer
+    val myArrayBuffer = new ArrayBuffer[Int]()
+    val intToInt = queries.map(x => (x(0), x(1))).groupBy(_._2)
+      .mapValues(x => x.map(_._1).sum)
+    for (elem <- intToInt) {
+      //A(elem._1) += elem._2
+      val isAEven = isEven(A(elem._1))
+      val isQEven = isEven(A(elem._2))
+
+      if (isAEven && isQEven) {
+        initSum += elem._2
+      } else if (isAEven && !isQEven) {
+        initSum -= A(elem._1)
+      } else if (!isAEven && !isQEven) {
+        initSum += (A(elem._1) + elem._2)
+      }
+      myArrayBuffer += initSum
+    }
+    myArrayBuffer.toArray
+  }
+}
+
+
+//runtime_error:Line 16: java.lang.ArrayIndexOutOfBoundsException: -3 (at $anonfun$sumEvenAfterQueries$6)
+//last_testcase:[1,2,3,4] [[1,0],[-3,1],[-4,0],[2,3]]

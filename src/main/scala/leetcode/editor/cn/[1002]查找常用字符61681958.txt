@@ -1,0 +1,25 @@
+object Solution {
+  def commonChars(A: Array[String]): List[String] = {
+    import scala.collection.mutable.ArrayBuffer
+    val myArrayBuffer = new ArrayBuffer[Char]()
+    val units = A.map(str => {
+      str.zipWithIndex.groupBy(_._1).mapValues(_.length)
+    })
+    val chars = units.map(_.keys).reduce((x, y) => x.toSet intersect y.toSet)
+
+    val tuples = chars.map((x: Char) => (x, units.map((y: Map[Char, Int]) => y(x)))).map(x => (x._1, x._2.min))
+
+    tuples.foreach(i => {
+      val char = i._1
+      val num = i._2
+      for (item <- 1 to num) {
+        myArrayBuffer += char.toString
+      }
+    })
+    return myArrayBuffer.toList
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 10: error: type mismatch; (in solution.scala)

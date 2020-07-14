@@ -1,0 +1,26 @@
+class RecentCounter() {
+  val mymap= scala.collection.mutable.Map[Int,Int]()
+  mymap.clear()
+  def ping(t: Int): Int = {
+    mymap(t) = 1 
+    val key = t - 3001
+    if(mymap.contains(key)) mymap.remove(key)
+    mymap.values.sum
+  }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * var obj = new RecentCounter()
+ * var param_1 = obj.ping(t)
+ */
+//
+//
+//
+//
+
+//total_testcases:68
+//total_correct:7
+//input_formatted:["RecentCounter","ping","ping","ping","ping","ping"], [[],[2196],[3938],[4723],[4775],[5952]]
+//expected_output:[null,1,2,3,4,4]
+//code_output:[null,1,2,3,4,5]

@@ -1,0 +1,17 @@
+object Solution {
+  def findJudge(N: Int, trust: Array[Array[Int]]): Int = {
+    val tuples: Array[(Int, Int)] = trust.map(x => (x(0), x(1)))
+    val keys = tuples.groupBy(_._1).keys
+    val intToInt2 = tuples.groupBy(_._2).mapValues(_.size)
+    val intToInt = intToInt2.filter(x => x._2 == N - 1)
+    val maybeTuple: Option[(Int, Int)] = intToInt.find(x => !keys.toList.contains(x._1))
+    if (maybeTuple.isDefined) maybeTuple.get._1 else -1
+  }
+}
+
+
+//total_testcases:89
+//total_correct:88
+//input_formatted:1, []
+//expected_output:1
+//code_output:-1

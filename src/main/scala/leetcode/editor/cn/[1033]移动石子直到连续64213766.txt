@@ -1,0 +1,14 @@
+object Solution {
+    def numMovesStones(a: Int, b: Int, c: Int): Array[Int] = {
+      var min = 0 
+      if (a-b-1>0) min += 1
+      if (b-c-1>0) min += 1
+      Array(min,c - a - 2)
+    }
+}
+
+//total_testcases:187
+//total_correct:27
+//input_formatted:1, 2, 5
+//expected_output:[1,2]
+//code_output:[0,-6]

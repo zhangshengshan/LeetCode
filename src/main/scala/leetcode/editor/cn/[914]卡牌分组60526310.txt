@@ -1,0 +1,15 @@
+object Solution {
+  def hasGroupsSizeX(deck: Array[Int]): Boolean = {
+    if (deck.length == 1) return false
+    val intToInt = deck.map(x => (x, 1)).groupBy(_._1).mapValues(x => x.length)
+    val value: Int = intToInt.minBy(_._2)._2
+    intToInt.forall(x => x._2 % value == 0)
+  }
+}
+
+
+//total_testcases:74
+//total_correct:45
+//input_formatted:[1,1,1,1,2,2,2,2,2,2]
+//expected_output:true
+//code_output:false

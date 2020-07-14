@@ -1,0 +1,24 @@
+object Solution {
+  def canThreePartsEqualSum(A: Array[Int]): Boolean = {
+    val arr = Array.ofDim[Int](A.length)
+    arr(0) = A(0)
+    for (i <- 1 to A.length - 1) {
+      arr(i) = arr(i - 1) + A(i)
+    }
+    arr.foreach(i=>print(" " + i))
+    println("")
+    if (arr(A.length - 1) % 3 == 0) {
+      val onePart = arr(A.length - 1) / 3
+      val twoPart = onePart * 2
+      if (arr.contains(onePart) && arr.contains(twoPart)) return true
+    }
+    return false
+  }
+}
+
+
+//total_testcases:55
+//total_correct:32
+//input_formatted:[6,1,1,13,-1,0,-10,20]
+//expected_output:false
+//code_output:true

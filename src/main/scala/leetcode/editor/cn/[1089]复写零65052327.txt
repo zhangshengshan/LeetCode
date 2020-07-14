@@ -1,0 +1,27 @@
+object Solution {
+  def duplicateZeros(arr: Array[Int]): Unit = {
+    arr.foreach(print)
+    println("")
+    var i = 0
+    while(i <=arr.length - 1) {
+      if (arr(i) == 0) {
+        for (j <- ((i + 1) to arr.length - 1).reverse) {
+          arr(j) = arr(j - 1)
+        }
+        i = i + 2
+        arr.foreach(print)
+        println("")
+      }
+    }
+  }
+}
+
+//runtime:N/A
+//memory:N/A
+//total_testcases:30
+//total_correct:0
+//input_formatted:
+//expected_output:
+//code_output:null
+//runtime_error:null
+//last_testcase:[1,0,2,3,0,4,5,0]

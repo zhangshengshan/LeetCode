@@ -1,0 +1,122 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode(var _value: Int) {
+ *   var value: Int = _value
+ *   var left: TreeNode = null
+ *   var right: TreeNode = null
+ * }
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+object Solution {
+
+  def dfs(root: TreeNode, L: Int, R: Int): Int = {
+    var sum = 0
+    if(root==null) return 0
+
+    if(root.value <= R && root.value >= L){
+      sum += root.value
+      sum += dfs(root.left, L, R)
+      sum += dfs(root.right, L, R)
+    } 
+    if(root.value < L ) {
+      sum += dfs(root.right)
+    }
+    if(root.value > R){
+      sum += dfs(root.left)
+    }
+    return sum 
+  }
+  def rangeSumBST(root: TreeNode, L: Int, R: Int): Int = {
+    dfs(root,L,R)
+  }
+}
+
+//total_correct:null
+//compile_error:Line 109: error: value += is not a member of Int (in solution.scala)

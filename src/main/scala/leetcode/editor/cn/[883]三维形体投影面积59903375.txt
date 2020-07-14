@@ -1,0 +1,8 @@
+object Solution {
+    def projectionArea(grid: Array[Array[Int]]): Int = {
+
+    }
+}
+
+//total_correct:null
+//compile_error:Line 2: error: type mismatch; (in solution.scala)

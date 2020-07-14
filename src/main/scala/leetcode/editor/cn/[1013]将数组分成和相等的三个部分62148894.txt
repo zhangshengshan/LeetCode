@@ -1,0 +1,8 @@
+object Solution {
+    def canThreePartsEqualSum(A: Array[Int]): Boolean = {
+
+    }
+}
+
+//total_correct:null
+//compile_error:Line 2: error: type mismatch; (in solution.scala)

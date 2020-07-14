@@ -1,0 +1,13 @@
+object Solution {
+  def findJudge(N: Int, trust: Array[Array[Int]]): Int = {
+    val tuples = trust.map(x => (x(0), x(1))).toMap
+    val intToInt: Map[Int, Int] = tuples.groupBy(_._2).mapValues(_.size)
+    val intToInt1: Map[Int, Int] = intToInt.filter(x => x._2 == N - 1)
+    val maybeTuple: Option[(Int, Int)] = intToInt1.find(x => !tuples.keys.toList.contains(x))
+    if (maybeTuple.isDefined) maybeTuple.get._1 else -1
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 4: error: type mismatch; (in solution.scala)

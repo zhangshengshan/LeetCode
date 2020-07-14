@@ -1,0 +1,23 @@
+object Solution {
+  def twoCitySchedCost(costs: Array[Array[Int]]): Int = {
+    var sum = 0
+    val index: Array[(Int, Int)] = costs.map(x => x(0) - x(1)).zipWithIndex
+    val mid = costs.length / 2
+    val left = index.slice(0, mid)
+    val right = index.slice(mid, index.length)
+    for (elem <- left) {
+      sum += costs(elem._2)(0)
+    }
+    for (elem <- right) {
+      sum += costs(elem._2)(1)
+    }
+    sum
+  }
+}
+
+
+//total_testcases:49
+//total_correct:2
+//input_formatted:[[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]
+//expected_output:1859
+//code_output:2359

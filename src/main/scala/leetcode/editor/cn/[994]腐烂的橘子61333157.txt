@@ -1,0 +1,45 @@
+object Solution {
+  def orangesRotting(grid: Array[Array[Int]]): Int = {
+
+    val xDir = List(-1, 0, 1, 0)
+    val yDir = List(0, -1, 0, 1)
+
+
+    import scala.collection.mutable.Queue
+    var num = 0
+    val myqueue = new Queue[((Int, Int), Int)]()
+
+    val rows = grid.length
+    val cols = grid(0).length
+    val seeds = for (i <- 0 to rows - 1; j <- 0 to cols - 1 if grid(i)(j) == 2) yield (i, j)
+    for (elem <- seeds) {
+      myqueue.enqueue((elem, 0))
+    }
+    while (myqueue.nonEmpty) {
+      val tuple: ((Int, Int), Int) = myqueue.dequeue()
+      val x = tuple._1._1
+      val y = tuple._1._2
+      val layer = tuple._2
+      num = layer
+      grid(x)(y) = 2
+      for (i <- 0 to 3) {
+        val nx = x + xDir(i)
+        val ny = y + yDir(i)
+        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid(nx)(ny) == 1) {
+          myqueue.enqueue((nx, ny), layer + 1)
+          num = layer + 1
+        }
+      }
+    }
+    if (grid.forall(_.forall(_ != 1))) return num
+    else -1
+  }
+
+  def main(args: Array[String]): Unit = {
+    val arr = Array(Array(2, 1, 0), Array(1, 1, 0), Array(0, 1, 1))
+    orangesRotting(arr)
+  }
+}
+
+//total_correct:null
+//compile_error:Line 29: error: type mismatch; (in solution.scala)

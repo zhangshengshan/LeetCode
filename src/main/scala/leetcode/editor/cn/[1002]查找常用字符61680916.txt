@@ -1,0 +1,16 @@
+object Solution {
+  def commonChars(A: Array[String]): List[String] = {
+    val units: Array[Map[Char, Int]] = A.map(str => {
+      str.zipWithIndex.groupBy(_._1).mapValues(_.length)
+    })
+    val chars: Set[Char] = units.reduce((x, y) => x.keys.toSet intersect y.keys.toSet)
+    val set = chars.map(char => units.map(x => (char, x.get(char).min)))
+    println(set)
+
+    return Nil
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 4: error: type mismatch; (in solution.scala)

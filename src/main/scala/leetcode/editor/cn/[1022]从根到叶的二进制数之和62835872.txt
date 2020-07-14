@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode(var _value: Int) {
+ * var value: Int = _value
+ * var left: TreeNode = null
+ * var right: TreeNode = null
+ * }
+ */
+
+
+object Solution {
+  var sum = 0
+
+  def dfs(root: TreeNode, stack: scala.collection.mutable.Stack[TreeNode]): Unit = {
+    if (root == null) return
+    if (root.left == null && root.right == null) {
+      sum += stack.foldLeft(0)((x, y) => x * 2 + y.value)
+      stack.pop()
+      return
+    }
+    dfs(root.left, stack)
+    dfs(root.right, stack)
+  }
+
+  def sumRootToLeaf(root: TreeNode): Int = {
+    import scala.collection.mutable.Stack
+    val mystack = new Stack[TreeNode]()
+    var num = 0
+    dfs(root, mystack)
+    return sum
+  }
+}
+
+
+//runtime_error:Line 18: java.util.NoSuchElementException: empty collection (at dfs)
+//last_testcase:[1,0,1,0,1,0,1]

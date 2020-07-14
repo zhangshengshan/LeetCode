@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode(var _value: Int) {
+ * var value: Int = _value
+ * var left: TreeNode = null
+ * var right: TreeNode = null
+ * }
+ */
+object Solution {
+  def existsCouson(nodes: List[(TreeNode, TreeNode)], x: Int, y: Int): Boolean = {
+    val xNode: Option[(TreeNode, TreeNode)] = nodes.find(x => x._2.value == x)
+    val yNode: Option[(TreeNode, TreeNode)] = nodes.find(x => x._2.value == y)
+    if (xNode.isDefined && yNode.isDefined && xNode.get._1 != yNode.get._1) return true
+    else false
+  }
+
+  def isCousins(root: TreeNode, x: Int, y: Int): Boolean = {
+    import scala.collection.mutable.Queue
+    val myqueue = new Queue[(TreeNode, TreeNode)]()
+    if (root == null) return false
+    myqueue.enqueue((null, root))
+    while (myqueue.nonEmpty) {
+      val roots = myqueue.dequeueAll(_ => true)
+      if (existsCouson(roots.toList, x, y)) return true
+      for (elem <- roots) {
+        myqueue.enqueue((elem._2, elem._2.left))
+        myqueue.enqueue((elem._2, elem._2.right))
+      }
+    }
+    return false
+  }
+}
+
+
+//total_correct:null=` will always yield false
+//compile_error:/leetcode/user_code/61232985/prog_joined.scala:18: warning: comparing values of types Int and (precompiled.TreeNode, precompiled.TreeNode) using `=

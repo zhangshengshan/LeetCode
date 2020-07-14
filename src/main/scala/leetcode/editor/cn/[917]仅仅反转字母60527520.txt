@@ -1,0 +1,27 @@
+object Solution {
+  def reverseOnlyLetters(S: String): String = {
+    val ret = S.toArray
+    var left = 0
+    var right = S.length - 1
+    while (left < right) {
+      while (!S(left).isLetter) {
+        left += 1
+      }
+      while (!S(right).isLetter) {
+        right -= 1
+      }
+      if (left < right) {
+        val tmp = ret(right)
+        ret(right) = ret(left)
+        ret(left) = tmp
+        left += 1
+        right -= 1
+      }
+    }
+    ret.mkString
+  }
+}
+
+
+//runtime_error:Line 7: java.lang.StringIndexOutOfBoundsException: String index out of range: 5 (at reverseOnlyLetters)
+//last_testcase:"7_28]"

@@ -1,0 +1,25 @@
+object Solution {
+  def findSpecialInteger(arr: Array[Int]): Int = {
+    val len = arr.length
+    var num = 0
+    var pre = -1
+    println(len / 4)
+    for (item <- arr) {
+      if (item != pre) {
+        num = 1
+      } else {
+        num += 1
+        if (num >= len / 4 + 1) return item
+      }
+      println("num =>" + num)
+      pre = item
+    }
+    return -1
+  }
+}
+
+//total_testcases:18
+//total_correct:17
+//input_formatted:[1]
+//expected_output:1
+//code_output:-1

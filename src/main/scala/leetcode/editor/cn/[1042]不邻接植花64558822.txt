@@ -1,0 +1,37 @@
+object Solution {
+  def gardenNoAdj(N: Int, paths: Array[Array[Int]]): Array[Int] = {
+
+    val mymap = scala.collection.mutable.Map[Int, Int]()
+    import scala.collection.mutable.ArrayBuffer
+    val myArrayBuffer = new ArrayBuffer[Int]()
+    mymap(1) = 1
+    myArrayBuffer += 1
+    val arr = Array.ofDim[Int](N, N)
+    for (elem <- paths) {
+      arr(elem(0) - 1)(elem(1) - 1) = 1
+      arr(elem(1) - 1)(elem(0) - 1) = 1
+    }
+    //for (elem <- arr) {
+    //for (e <- elem) {
+    //print(" " + e)
+    //}
+    //println("")
+    //}
+    for (i <- 2 to N) {
+      println("process " + i)
+      println(mymap)
+      var num = 1
+      for (j <- arr(i - 1)) {
+        if (arr(i - 1)(j - 1) == 1) {
+          if (mymap contains (j)) num = mymap(j) + 1
+        }
+      }
+      myArrayBuffer += num
+      mymap(i) = num + 1
+    }
+    myArrayBuffer.toArray
+  }
+}
+
+//runtime_error:Line 25: java.lang.ArrayIndexOutOfBoundsException: -1 (at $anonfun$gardenNoAdj$3)
+//last_testcase:3 [[1,2],[2,3],[3,1]]

@@ -1,0 +1,22 @@
+object Solution{
+  def lastStoneWeight(stones: Array[Int]): Int = {
+    implicit val smallOrdering = Ordering[Int].reverse
+    val heap = scala.collection.mutable.PriorityQueue[Int]()  
+    for (item <- stones) {
+      heap.enqueue(item)
+    }
+    while(heap.size >= 2){
+      val max = heap.dequeue
+      val secondMax = heap.dequeue
+      if(max - secondMax > 0) heap.enqueue(max- secondMax)
+    }
+
+    if(heap.size == 1) heap.dequeue else 0
+  }
+}
+
+//total_testcases:70
+//total_correct:27
+//input_formatted:[2,7,4,1,8,1]
+//expected_output:1
+//code_output:0

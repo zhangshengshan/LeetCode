@@ -1,0 +1,41 @@
+object Solution {
+  def numRookCaptures(board: Array[Array[Char]]): Int = {
+    var dir = List((-1, 0), (1, 0), (0, -1), (0, 1))
+    val rows = board.length
+    val cols = board(0).length
+    var num = 0
+
+    val point = for (i <- 0 to rows - 1; j <- 0 to cols - 1 if board(i)(j) == 'R') yield (i, j)
+    val tuple: (Int, Int) = point.toList.apply(0)
+    val i = tuple._1
+    val j = tuple._2
+
+    import util.control.Breaks._
+    for (elem <- dir) {
+      breakable {
+        var x = i
+        var y = j
+        x = x + elem._1
+        y = y + elem._2
+        while (x >= 0
+          && x < rows
+          && y >= 0
+          && y < cols
+          && board(x)(y) != 'B') {
+          if (board(x)(y) == 'p') {
+            num += 1
+            break
+          }
+        }
+      }
+    }
+    return num
+  }
+  def main(args: Array[String]):Unit = {
+    numRookCaptures(Array(Array(".",".",".",".",".",".",".","."),Array(".",".",".","p",".",".",".","."),Array(".",".",".","R",".",".",".","p"),Array(".",".",".",".",".",".",".","."),Array(".",".",".",".",".",".",".","."),Array(".",".",".","p",".",".",".","."),Array(".",".",".",".",".",".",".","."),Array(".",".",".",".",".",".",".",".")))
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 35: error: type mismatch; (in solution.scala)

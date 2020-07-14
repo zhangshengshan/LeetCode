@@ -1,0 +1,18 @@
+object Solution {
+  def bitwiseComplement(N: Int): Int = {
+    var base = 1
+    while (N / base != 0) {
+      println(base)
+      base = base << 1
+    }
+    println(base)
+    base - 1 - N
+  }
+}
+
+
+//total_testcases:128
+//total_correct:127
+//input_formatted:0
+//expected_output:1
+//code_output:0
