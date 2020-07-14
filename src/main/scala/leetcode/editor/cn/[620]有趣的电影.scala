@@ -35,14 +35,14 @@
 
 
 //There is no code of Scala type for this problem
-select 
-  * 
-from 
-  cinema 
-where 
-  description <> 'boring'
-and 
-  mod(id,2) = 1
-order by 
-  rating desc
-;
+//select
+//  *
+//from
+//  cinema
+//where
+//  description <> 'boring'
+//and
+//  mod(id,2) = 1
+//order by
+//  rating desc
+//;
