@@ -54,7 +54,6 @@ object Solution {
         index += 1
       }
     }
-
     for (elem <- arr) {
       buffer.append(mymap(elem))
     }
