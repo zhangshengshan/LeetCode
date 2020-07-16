@@ -23,21 +23,8 @@
 
 object Solution {
   def removeDuplicates(S: String): String = {
-    }
-
-    ""
-    //import scala.collection.mutable.Stack
-    //val mystack = new Stack[Char]()
-    //for (item <- S) {
-      //if (mystack.nonEmpty && mystack.top == item) {
-        //mystack.pop
-      //} else {
-        //mystack.push(item)
-      //}
-    //}
-    //mystack.mkString.reverse
+    null
   }
-
 }
 
 
