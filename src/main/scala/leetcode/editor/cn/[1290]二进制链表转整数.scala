@@ -131,7 +131,8 @@ object Solution {
       var ph = head 
       var sum = 0 
       while(ph != null){
-        sum += sum >> 2 + ph.x
+        println(ph.x)
+        sum = sum * 2 + ph.x
         ph = ph.next
       }
       sum
