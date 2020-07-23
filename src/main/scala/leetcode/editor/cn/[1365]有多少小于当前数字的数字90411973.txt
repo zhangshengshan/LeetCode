@@ -1,0 +1,28 @@
+object Solution {
+  def smallerNumbersThanCurrent(nums: Array[Int]): Array[Int] = {
+    val bucket = Array.ofDim[Int](nums.length + 1)
+    for (item <- nums) {
+      bucket(item) += 1
+    }
+
+    var preSum = 0 
+    for (idx <- 0 until bucket.length) {
+      if( bucket(idx) > 0 ){
+        val tmp = bucket(idx)
+        bucket(idx) = preSum
+        preSum += tmp
+      }
+    }
+
+    import scala.collection.mutable.ArrayBuffer 
+    val myArrayBuffer = new ArrayBuffer[Int]()
+    for (item <- nums) {
+      myArrayBuffer.append(bucket(item))
+    }
+
+    myArrayBuffer.toArray
+  }
+}
+
+//runtime_error:Line 5: java.lang.ArrayIndexOutOfBoundsException: 8 (at $anonfun$smallerNumbersThanCurrent$1)
+//last_testcase:[8,1,2,2,3]

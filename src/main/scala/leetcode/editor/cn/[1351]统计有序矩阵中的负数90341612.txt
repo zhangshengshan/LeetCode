@@ -1,0 +1,36 @@
+object Solution {
+  def findFirstNegtive(array: Array[Int]): Int = {
+
+    array.foreach(println)
+
+    var left = 0
+    var right = array.size - 1
+
+    while (left < right) {
+      println("left , right ", left , right )
+      val mid = (left + right) >> 1
+      if (array(mid) >= 0) {
+        left = mid
+      } else {
+        right = mid - 1
+      }
+    }
+    return left
+  }
+
+  def countNegatives(grid: Array[Array[Int]]): Int = {
+    val ints: Array[Int] = grid.map(findFirstNegtive)
+    ints foreach (println)
+    ints.sum
+  }
+}
+
+//runtime:N/A
+//memory:N/A
+//total_testcases:44
+//total_correct:0
+//input_formatted:
+//expected_output:
+//code_output:null
+//runtime_error:null
+//last_testcase:[[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
