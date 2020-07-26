@@ -46,8 +46,12 @@
 // 链表的结点总数不超过 30。 
 // 每个结点的值不是 0 就是 1。 
 // 
+<<<<<<< HEAD
 // Related Topics 位运算 链表 
 // 👍 39 👎 0
+=======
+// Related Topics 位运算 链表
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -58,10 +62,92 @@
  *   var x: Int = _x
  * }
  */
+<<<<<<< HEAD
 object Solution {
     def getDecimalValue(head: ListNode): Int = {
 
 
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+object Solution {
+    def getDecimalValue(head: ListNode): Int = {
+      var ph = head 
+      var sum = 0 
+      while(ph != null){
+        println(ph.x)
+        sum = sum * 2 + ph.x
+        ph = ph.next
+      }
+      sum
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

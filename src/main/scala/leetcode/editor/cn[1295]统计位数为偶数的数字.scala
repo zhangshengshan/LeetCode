@@ -31,19 +31,6 @@
 // 1 <= nums.length <= 500 
 // 1 <= nums[i] <= 10^5 
 // 
-<<<<<<< HEAD
-// Related Topics 数组 
-// 👍 42 👎 0
-
-
-//leetcode submit region begin(Prohibit modification and deletion)
-object Solution {
-    def findNumbers(nums: Array[Int]): Int = {
-
-    }
-}
-//leetcode submit region end(Prohibit modification and deletion)
-=======
 // Related Topics 数组
 
 
@@ -149,7 +136,6 @@ object Solution {
 
 object Solution {
     def findNumbers(nums: Array[Int]): Int = {
-      nums.filter( x => ((x >= 10 && x <= 99 ) || ( x >= 1000 && x <= 9999 ) || x == 100000 )).length
+      nums.filter( x => ((x >= 10 && x <= 99 ) || ( x >= 1000 and x <= 9999 ) || x == 100000 )).length
     }
 }
->>>>>>> 2392a866852869394739dc4fd756a8e270293df8

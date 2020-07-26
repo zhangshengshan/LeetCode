@@ -1,13 +1,8 @@
 //给你一个整数数组 arr 。请你将数组中的元素按照其二进制表示中数字 1 的数目升序排序。 
-//
 // 如果存在多个数字二进制中 1 的数目相同，则必须将它们按照数值大小升序排列。 
-//
 // 请你返回排序后的数组。 
 //
-// 
-//
 // 示例 1： 
-//
 // 输入：arr = [0,1,2,3,4,5,6,7,8]
 //输出：[0,1,2,4,8,3,5,6,7]
 //解释：[0] 是唯一一个有 0 个 1 的数。
@@ -15,17 +10,11 @@
 //[3,5,6] 有 2 个 1 。
 //[7] 有 3 个 1 。
 //按照 1 的个数排序得到的结果数组为 [0,1,2,4,8,3,5,6,7]
-// 
-//
 // 示例 2： 
-//
 // 输入：arr = [1024,512,256,128,64,32,16,8,4,2,1]
 //输出：[1,2,4,8,16,32,64,128,256,512,1024]
 //解释：数组中所有整数二进制下都只有 1 个 1 ，所以你需要按照数值大小将它们排序。
-// 
-//
 // 示例 3： 
-//
 // 输入：arr = [10000,10000]
 //输出：[10000,10000]
 // 
@@ -50,48 +39,133 @@
 // 1 <= arr.length <= 500 
 // 0 <= arr[i] <= 10^4 
 // 
-<<<<<<< HEAD
-// Related Topics 排序 位运算 
-// 👍 17 👎 0
-=======
 // Related Topics 排序 位运算
->>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 object Solution {
-<<<<<<< HEAD
-  def sortByBits(arr: Array[Int]): Array[Int] = {
-    //一个证书中有多少个1
-  }
-=======
   /**
-   * self define sort function
+   * self define sort function 
    */
-  def onesCount(n: Int): Int = {
-    var in = n
-    var ret = 0
+  def onesCount(n:Int):Int = {
+    var in = n 
+    var ret = 0 
 
-    while (in != 0) {
+    while(in!=0){
       ret += 1
-      in = in & (in - 1)
+      in = in & (in-1)
     }
     ret
   }
 
   def sortByBits(arr: Array[Int]): Array[Int] = {
-    arr.sortWith((x, y) => {
-      if (onesCount(x) < onesCount(y)) {
+    arr.sortWith( (x , y ) => {
+      if( onesCount(x) < onesCount(y) ){
         true
-      } else if (onesCount(x) > onesCount(y)) {
+      }else if( onesCount(x) > onesCount(y) ){
         false
-      } else {
+      }else{
         x < y
       }
     })
   }
-
->>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
