@@ -1,0 +1,39 @@
+object Solution {
+  def tictactoe(moves: Array[Array[Int]]): String = {
+    val wins = Set(
+       Set(1 ,2 ,3)
+      ,Set(4 ,5 ,6)
+      ,Set(7 ,8 ,9)
+      ,Set(1 ,4 ,7)
+      ,Set(2 ,5 ,8)
+      ,Set(3 ,6 ,9)
+      ,Set(3, 5, 7)
+      ,Set(1 ,5 ,9)
+    )
+
+    def checkSuccess(list:List):Boolean = {
+      wins.exists( item => item.forall( e => list.contains(e) ))
+    }
+
+    import scala.collection.mutable.ArrayBuffer 
+    val bufA = new ArrayBuffer[Int]()
+    val bufB = new ArrayBuffer[Int]()
+
+    var num = 0
+    for (item <- moves) {
+      if(num % 2==0){
+        bufA.append(item(0) * 3 + item(1) + 1)
+        if(checkSuccess(bufA)) return "A"
+      }else{
+        bufB.append(item(0) * 3 + item(1) + 1)
+        if(checkSuccess(bufA)) return "B"
+      }
+      num += 1
+    }
+
+    if(num ==9) return "Draw" else return "Pending"
+  }
+}
+
+//total_correct:null
+//compile_error:Line 14: error: type List takes type parameters (in solution.scala)

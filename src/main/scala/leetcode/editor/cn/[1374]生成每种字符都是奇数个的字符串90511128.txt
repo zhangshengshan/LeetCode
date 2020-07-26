@@ -1,0 +1,27 @@
+object solution {
+  def generatethestring(n: Int): String = {
+    import scala.collection.mutable.arraybuffer
+    val myarraybuffer = new arraybuffer[Char]()
+
+    if(n%2==0){
+      myArrayBuffer.append('x')
+      for( i <- 0 until n){
+        myArrayBuffer.append('y')
+      }
+    }else{
+      if(n==1) myArrayBuffer.append('x')
+      else {
+        myArrayBuffer.append('x')
+        myArrayBuffer.append('y')
+        for( i <- 2 to n-2){
+          myArrayBuffer.append('z')
+        }
+      }
+    }
+    myArrayBuffer.mkString
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 3: error: object arraybuffer is not a member of package scala.collection.mutable (in solution.scala)

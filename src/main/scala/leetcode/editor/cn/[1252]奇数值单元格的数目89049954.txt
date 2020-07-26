@@ -1,0 +1,31 @@
+object Solution {
+  def oddCells(n: Int, m: Int, indices: Array[Array[Int]]): Int = {
+
+    val rowMap = scala.collection.mutable.Map[Int, Int]()
+    val colMap = scala.collection.mutable.Map[Int, Int]()
+
+    for (elem <- indices) {
+      if (rowMap.contains(elem(0))) {
+        rowMap(elem(0)) = (rowMap(elem(0)) + 1) % 2
+      }
+
+      if (colMap.contains(elem(1))) {
+        colMap(elem(1)) = (colMap(elem(1)) + 1) % 2
+      }
+    }
+
+    val oddRows = rowMap.filter(_._2 == 1).size
+    val oddCols = colMap.filter(_._2 == 1).size
+
+    println(oddRows)
+    println(oddCols)
+    oddCols * (m - oddCols) + (n - oddRows) * oddCols
+  }
+}
+
+
+//total_testcases:44
+//total_correct:2
+//input_formatted:2, 3, [[0,1],[1,1]]
+//expected_output:6
+//code_output:0

@@ -1,0 +1,16 @@
+object Solution {
+  def countLargestGroup(n: Int): Int = {
+    val mymap = scala.collection.mutable.Map[Int, Int]()
+    val sums = (1 to n).map(x => x.toString.map(_.toString.toInt).sum)
+    for (item <- sums) {
+      if (mymap.contains(item)) mymap(item) += 1
+      else mymap(item) = 1
+    }
+    mymap.map(_.swap).groupBy(_._1).map((x: (Int, mutable.Map[Int, Int])) => x._2.length).max
+
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 9: error: not found: value mutable (in solution.scala)

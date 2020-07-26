@@ -1,0 +1,26 @@
+
+object Solution {
+
+  def minTimeToVisitAllPoints(points: Array[Array[Int]]): Int = {
+
+    var x = points(0)(0)
+    var y = points(0)(1)
+
+    var ret = 0
+    for (item <- points) {
+      println("========", item)
+      while (x != item(0) && y != item(1)) {
+        if (item(0) > x) x += 1
+        if (item(0) < x) x -= 1
+        if (item(1) > y) y += 1
+        if (item(1) < y) y -= 1
+        ret += 1
+      }
+    }
+    ret
+  }
+}
+
+
+//total_correct:null
+//compile_error:Line 13: error: too many arguments (2) for method println: (x: Any)Unit (in solution.scala)

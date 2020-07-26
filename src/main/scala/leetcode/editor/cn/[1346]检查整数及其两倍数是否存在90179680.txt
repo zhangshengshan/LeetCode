@@ -1,0 +1,26 @@
+object Solution {
+
+  def checkIfExist(arr: Array[Int]): Boolean = {
+
+    val mymap = scala.collection.mutable.Map[Int, Int]()
+
+
+    for (item <- arr) {
+      mymap(item) += 1
+    }
+
+    mymap.foreach(println)
+
+    for (item <- arr) {
+      if (item == 0 && mymap(0) >= 2) return true
+      else if (mymap.contains(item * 2)) return true
+    }
+    return false
+
+  }
+
+}
+
+
+//runtime_error:Line 9: java.util.NoSuchElementException: key not found: 10 (at $anonfun$checkIfExist$1)
+//last_testcase:[10,2,5,3]

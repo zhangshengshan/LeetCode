@@ -1,0 +1,24 @@
+object Solution {
+  def oddCells(n: Int, m: Int, indices: Array[Array[Int]]): Int = {
+
+    val rowMap = scala.collection.mutable.Map[Int,Int]()
+    val colMap = scala.collection.mutable.Map[Int,Int]()
+
+    for (elem <- indices) {
+      if(rowMap.contains(elem(0)){
+        rowMap(elem(0)) = (elem(0) + 1)%2
+      }
+      if(colMap.contains(elem(1)){
+        rowMap(elem(1)) = (elem(1) + 1)%2
+      }
+    }
+
+    val oddRows = rowMap.filter( _ == 1 ).length
+    val oddCols = colMap.filter( _ == 1 ).length
+
+    oddCols * ( m - oddCols ) + ( n - oddRows a ) * oddCols
+  }
+}
+
+//total_correct:null
+//compile_error:Line 11: error: ')' expected but 'if' found. (in solution.scala)
