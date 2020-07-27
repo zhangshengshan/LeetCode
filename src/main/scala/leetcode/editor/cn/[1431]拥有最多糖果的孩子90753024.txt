@@ -1,0 +1,11 @@
+object Solution {
+  def kidsWithCandies(candies: Array[Int], extraCandies: Int): Array[Boolean] = {
+    val max: Int = candies.max
+    candies.map(x => {
+      if (max - x - extraCandies) true else false
+    })
+  }
+}
+
+//total_correct:null
+//compile_error:Line 5: error: type mismatch; (in solution.scala)

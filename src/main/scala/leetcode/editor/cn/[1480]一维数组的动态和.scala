@@ -33,10 +33,117 @@
 // Related Topics 数组
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 object Solution {
     def runningSum(nums: Array[Int]): Array[Int] = {
+      import scala.collection.mutable.ArrayBuffer 
+      val myArrayBuffer = new ArrayBuffer[Int]()
 
+      var preSum = 0 
+      for (i <- 0 until nums.size) {
+        myArrayBuffer.append(nums(i) + preSum)
+        preSum += nums(i)
+      }
+      myArrayBuffer.toArray
     }
 }
-//leetcode submit region end(Prohibit modification and deletion)
