@@ -25,9 +25,9 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
   def longestCommonPrefix(strs: Array[String]): String = {
-    if (strs.length == 0) return ""
-    strs.foldLeft(strs.head){(prefix, str) =>
-      (prefix zip str).takeWhile {case (x, y) => x == y}.map(_._1).mkString}
+    //if (strs.length == 0) return ""
+    //strs.foldLeft(strs.head){(prefix, str) =>
+    //(prefix zip str).takeWhile( x => x._1 == x._2 ).map(_._1).mkString}
   }
 }
 

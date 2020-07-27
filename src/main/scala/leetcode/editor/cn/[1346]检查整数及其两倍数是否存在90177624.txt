@@ -1,0 +1,27 @@
+object Solution {
+
+  def checkIfExist(arr: Array[Int]): Boolean = {
+
+    val mymap= scala.collection.mutable.Map[Int,Int]()
+
+
+    for (item <- arr) {
+      mymap(item) = 1
+    }
+
+    for (item <- arr) {
+      if( mymap.contains(item * 2) ) return true
+
+      if( item % 2 == 0 && mymap.contains(item / 2)) return true 
+    }
+    return false
+
+  }
+
+}
+
+//total_testcases:104
+//total_correct:103
+//input_formatted:[-2,0,10,-19,4,6,-8]
+//expected_output:false
+//code_output:true

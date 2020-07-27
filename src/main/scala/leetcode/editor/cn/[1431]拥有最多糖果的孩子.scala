@@ -38,6 +38,7 @@
 // 2 <= candies.length <= 100 
 // 1 <= candies[i] <= 100 
 // 1 <= extraCandies <= 50 
+<<<<<<< HEAD
 //
 // Related Topics 数 
 
@@ -50,3 +51,17 @@ object Solution {
     })
   }
 }
+=======
+// 
+// Related Topics 数组 
+// 👍 70 👎 0
+
+
+//leetcode submit region begin(Prohibit modification and deletion)
+object Solution {
+    def kidsWithCandies(candies: Array[Int], extraCandies: Int): Array[Boolean] = {
+
+    }
+}
+//leetcode submit region end(Prohibit modification and deletion)
+>>>>>>> 6f1048bbdd3bb1828952671f4e407775ca1b172e

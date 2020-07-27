@@ -46,7 +46,12 @@
 // 题目保证 f(x, y) == z 的解处于 1 <= x, y <= 1000 的范围内。 
 // 在 1 <= x, y <= 1000 的前提下，题目保证 f(x, y) 是一个 32 位有符号整数。 
 // 
+<<<<<<< HEAD
+// Related Topics 数学 二分查找 
+// 👍 26 👎 0
+=======
 // Related Topics 数学 二分查找
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -61,9 +66,137 @@
  * };
  */
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+object Solution {
+  def findSolution(customfunction: CustomFunction, z: Int): List[List[Int]] = {
+
+    import scala.collection.mutable.ArrayBuffer 
+    val myArrayBuffer = new ArrayBuffer[List[Int]]()
+
+    var x = 1000
+    var y = 1
+    while( x>= 1 && y<= 1000) {
+
+      if( customfunction.f(x,y) ==z){
+        myArrayBuffer.append(List(x,y))
+        x -= 1
+      }else if( customfunction.f(x,y) > z ){
+        x -= 1
+      }else {
+        y += 1
+      }
+    }
+
+    myArrayBuffer.toList
+  }
+=======
 object Solution {
     def findSolution(customfunction: CustomFunction, z: Int): List[List[Int]] = {
         
     }
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 }
 //leetcode submit region end(Prohibit modification and deletion)

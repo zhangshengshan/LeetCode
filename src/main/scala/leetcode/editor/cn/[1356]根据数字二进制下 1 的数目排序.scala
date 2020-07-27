@@ -50,11 +50,21 @@
 // 1 <= arr.length <= 500 
 // 0 <= arr[i] <= 10^4 
 // 
+<<<<<<< HEAD
+// Related Topics 排序 位运算 
+// 👍 17 👎 0
+=======
 // Related Topics 排序 位运算
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
+<<<<<<< HEAD
+  def sortByBits(arr: Array[Int]): Array[Int] = {
+    //一个证书中有多少个1
+  }
+=======
   /**
    * self define sort function
    */
@@ -81,6 +91,7 @@ object Solution {
     })
   }
 
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

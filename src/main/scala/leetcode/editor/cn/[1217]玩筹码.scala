@@ -35,13 +35,19 @@
 // 1 <= chips.length <= 100 
 // 1 <= chips[i] <= 10^9 
 // 
+<<<<<<< HEAD
+// Related Topics 贪心算法 数组 数学 
+// 👍 42 👎 0
+=======
 // Related Topics 贪心算法 数组 数学
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
-object Solution {
+
+=======
     def minCostToMoveChips(chips: Array[Int]): Int = {
 
     }
 }
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 //leetcode submit region end(Prohibit modification and deletion)

@@ -1,4 +1,9 @@
 //给你两个整数数组 arr1 ， arr2 和一个整数 d ，请你返回两个数组之间的 距离值 。 
+<<<<<<< HEAD
+// 「距离值」 定义为符合此距离要求的元素数目：对于元素 arr1[i] ，不存在任何元素 arr2[j] 满足 |arr1[i]-arr2[j]| <= d
+// 。 
+// 示例 1：
+=======
 //
 // 「距离值」 定义为符合此距离要求的元素数目：对于元素 arr1[i] ，不存在任何元素 arr2[j] 满足 |arr1[i]-arr2[j]| <= d
 // 。 
@@ -7,6 +12,7 @@
 //
 // 示例 1： 
 //
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 // 输入：arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2
 //输出：2
 //解释：
@@ -54,13 +60,43 @@
 // -10^3 <= arr1[i], arr2[j] <= 10^3 
 // 0 <= d <= 100 
 // 
+<<<<<<< HEAD
+// Related Topics 数组 
+// 👍 12 👎 0
+=======
 // Related Topics 数组
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
+<<<<<<< HEAD
+  def binarySearch(arr:Array[Int], x:Int):Int = {
+
+    var left = 0
+    var right = array.size - 1
+
+    while(left < right){
+      val mid = (left + right) >> 1
+      if (arr(mid) == x) return mid
+
+      if (arr(mid) > x) {
+        right = mid
+      }else {
+        left = mid + 1
+      }
+    }
+    return mid
+  }
+  def findTheDistanceValue(arr1: Array[Int], arr2: Array[Int], d: Int): Int = {
+    arr1.filter(x => arr2.forall(y => math.abs(x - y) > d)).length
+  }
+}
+
+=======
     def findTheDistanceValue(arr1: Array[Int], arr2: Array[Int], d: Int): Int = {
 
     }
 }
+>>>>>>> 2392a866852869394739dc4fd756a8e270293df8
 //leetcode submit region end(Prohibit modification and deletion)

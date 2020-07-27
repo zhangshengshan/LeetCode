@@ -1,0 +1,8 @@
+object Solution {
+    def freqAlphabets(s: String): String = {
+
+    }
+}
+
+//total_correct:null
+//compile_error:Line 2: error: type mismatch; (in solution.scala)
