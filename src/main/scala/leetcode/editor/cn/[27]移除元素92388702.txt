@@ -1,0 +1,35 @@
+object Solution {
+  def removeElement(nums: Array[Int], `val`: Int): Int = {
+    val value = `val`
+    var left = 0
+    var right = nums.length - 1
+    var num = 0
+
+    while (left < right) {
+
+      while (nums(left) != value) {
+        left += 1
+      }
+
+      while (nums(right) == value) {
+        right -= 1
+      }
+
+      println(left, right)
+
+      if (left < right) {
+        val tmp = nums(left)
+        nums(left) = nums(right)
+        nums(right) = tmp
+        num += 1
+      }
+    }
+    left
+  }
+}
+
+//total_testcases:113
+//total_correct:5
+//input_formatted:[2], 3
+//expected_output:[2]
+//code_output:[]

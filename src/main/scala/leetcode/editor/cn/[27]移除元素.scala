@@ -32,7 +32,8 @@
 //
 // 为什么返回数值是整数，但输出的答案是数组呢? 
 //
-// 请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 
+
+// 请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
 //
 // 你可以想象内部操作如下: 
 //
@@ -49,10 +50,19 @@
 // 👍 609 👎 0
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
 object Solution {
-    def removeElement(nums: Array[Int], `val`: Int): Int = {
+  def removeElement(nums: Array[Int], `val`: Int): Int = {
 
+    var i = 0 
+    var j = 0 
+
+    while(j<nums.length){
+      if( nums(j) != `val` ){
+        nums(i) = nums(j)
+        i += 1
+      }
+      j += 1
     }
+    i 
+  }
 }
-//leetcode submit region end(Prohibit modification and deletion)
