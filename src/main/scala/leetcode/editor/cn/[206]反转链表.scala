@@ -15,30 +15,52 @@
 /**
  * Definition for singly-linked list.
  * class ListNode(var _x: Int = 0) {
- *   var next: ListNode = null
- *   var x: Int = _x
+ * var next: ListNode = null
+ * var x: Int = _x
  * }
  */
 object Solution {
-//    def reverseList(head: ListNode): ListNode = {
-//      if (head==null || head.next == null)  return null
-//      val p = reverseList(head.next)
-//      head.next.next = head
-//      head.next = null
-//      return p
-//    }
+  //    def reverseList(head: ListNode): ListNode = {
+  //      if (head==null || head.next == null)  return null
+  //      val p = reverseList(head.next)
+  //      head.next.next = head
+  //      head.next = null
+  //      return p
+  //    }
 
-    def reverseList(head: ListNode): ListNode = {
-      var last :ListNode= null
-      var now = head
-      var next: ListNode = null
-      while(now != null){
-        next = now.next
-        now.next = last
-        last = now
-        now = next
-      }
-      return last
+
+  //      var last :ListNode= null
+  //      var now = head
+  //      var next: ListNode = null
+  //      while(now != null){
+  //        next = now.next
+  //        now.next = last
+  //        last = now
+  //        now = next
+  //      }
+  //      return last
+  //
+
+  //  pPrev pCur pNext
+  //  A -> B -> C -> D
+  //  A <- B    C -> D
+  def reverseList(head: ListNode): ListNode = {
+
+
+    var now = head
+    var last: ListNode = null
+    var next: ListNode = null
+
+    while (now != null) {
+      next = now.next 
+      now.next = last
+      last = now 
+      now = next
     }
+
+    last
+
+  }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

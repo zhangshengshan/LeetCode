@@ -16,68 +16,78 @@
 //
 // 示例： 
 //
-// MyLinkedList linkedList = new MyLinkedList();
-//linkedList.addAtHead(1);
-//linkedList.addAtTail(3);
+MyLinkedList linkedList = new MyLinkedList();
+MlinkedList.addAtHead(1);
+MlinkedList.addAtTail(3);
 //linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
 //linkedList.get(1);            //返回2
 //linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 //linkedList.get(1);            //返回3
 // 
 //
-// 
 //
 // 提示： 
 //
 // 
-// 所有val值都在 [1, 1000] 之内。 
-// 操作次数将在 [1, 1000] 之内。 
-// 请不要使用内置的 LinkedList 库。 
-// 
-// Related Topics 设计 链表 
-// 👍 156 👎 0
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
 class MyLinkedList() {
+  class ListNode(v:Int) {
+    val x :Int = v
+    var next :ListNode = null 
+    var prev :ListNode = null
+  }
+  /** Initialize your data structure here. */
 
-    /** Initialize your data structure here. */
+  val head = new ListNode(Int.MaxValue)
+  val tail = new ListNode(Int.MinValue)
 
+  /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
+  def get(index: Int): Int = {
 
-    /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
-    def get(index: Int): Int = {
+  }
 
-    }
+  /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
+  def addAtHead(`val`: Int) {
 
-    /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
-    def addAtHead(`val`: Int) {
+  }
 
-    }
+  /** Append a node of value val to the last element of the linked list. */
+  def addAtTail(`val`: Int) {
 
-    /** Append a node of value val to the last element of the linked list. */
-    def addAtTail(`val`: Int) {
+  }
 
-    }
+  /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
+  def addAtIndex(index: Int, `val`: Int) {
 
-    /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
-    def addAtIndex(index: Int, `val`: Int) {
+  }
 
-    }
+  /** Delete the index-th node in the linked list, if the index is valid. */
+  def deleteAtIndex(index: Int) {
 
-    /** Delete the index-th node in the linked list, if the index is valid. */
-    def deleteAtIndex(index: Int) {
+  }
 
-    }
+  def walk(){
 
+  }
+
+  def reverseWalk(){
+
+  }
 }
-
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * var obj = new MyLinkedList()
- * var param_1 = obj.get(index)
- * obj.addAtHead(`val`)
- * obj.addAtTail(`val`)
- * obj.addAtIndex(index,`val`)
- * obj.deleteAtIndex(index)
- */
-//leetcode submit region end(Prohibit modification and deletion)
+//var obj = new MyLinkedList()
+//obj.addAtHead(1)
+//obj.addAtTail(2)
+//obj.addAtIndex(1,3)
+//val obj = new MyLinkedList()
+//obj.addAtHead(7)
+//obj.addAtHead(2)
+//obj.addAtHead(1)
+//obj.addAtIndex(3,0)
+//obj.deleteAtIndex(2)
+//obj.addAtHead(6)
+//obj.addAtTail(4)
+//obj.get(4)
+//obj.addAtHead(4)
+//obj.addAtIndex(5,0)
+//obj.addAtHead(6)

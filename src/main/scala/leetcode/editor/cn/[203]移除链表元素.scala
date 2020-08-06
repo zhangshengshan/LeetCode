@@ -5,30 +5,28 @@
  * var x: Int = _x
  * }
  */
+
 object Solution {
   def removeElements(head: ListNode, `val`: Int): ListNode = {
+
     val value = `val`
-    var newHead = head
-
-    if (head == null) return null
-    while (newHead != null && newHead.x == value) {
-      newHead = newHead.next
-    }
-
-    var last = newHead
-    var cur = newHead
+    val tmpHead = new ListNode(Int.MaxValue)
+    tmpHead.next = head
+    var cur = head
+    var last = tmpHead
 
     while (cur != null) {
+      val next = cur.next
       if (cur.x == value) {
         last.next = cur.next
       } else {
         last = cur
       }
-      cur = cur.next
+      cur = next
     }
 
-    return newHead
+    return tmpHead.next
+
   }
 }
 
-//leetcode submit region end(Prohibit modification and deletion)

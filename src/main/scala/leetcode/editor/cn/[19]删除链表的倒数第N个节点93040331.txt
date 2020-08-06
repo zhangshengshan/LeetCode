@@ -1,0 +1,26 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode(var _x: Int = 0) {
+ *   var next: ListNode = null
+ *   var x: Int = _x
+ * }
+ */
+object Solution {
+    def removeNthFromEnd(head: ListNode, n: Int): ListNode = {
+      var cnt = n
+      var fast = head
+      var slow = head
+      while(n > 0){
+        fast = fast.next
+      }
+      while(fast.next != null){
+        fast.next = fast.next.next
+      }
+      var ret = slow.next
+      slow.next = slow.next.next
+      return ret
+    }
+}
+
+//runtime_error:Line 14: java.lang.NullPointerException (at removeNthFromEnd)
+//last_testcase:[1,2,3,4,5] 2

@@ -1,0 +1,78 @@
+//o   //println("size =>", s.size)
+//    val arr = s.toArray
+//    var start = 0
+//    while (start < arr.size) {
+//
+//      if (arr(start) != ' ') {
+//          var end = start
+//
+//          while (end < arr.size && arr(end) != ' ') {
+//            end += 1
+//          }
+//
+//          var left = start
+//          var right = end - 1
+//          println("left is ", left, " right is ", right)
+//
+//          while (left < right) {
+//            val tmp = arr(left)
+//            arr(left) = arr(right)
+//            arr(right) = tmp
+//            left += 1
+//            right -= 1
+//          }
+//          start = end + 1
+//        }else{
+//          start += 1
+//        }
+//    }
+//    arr.mkStringbject Solution {
+object Solution {
+  def reverseWords(s: String): String = {
+
+    var arr = s.toArray
+
+    var slow = 0
+    var fast = 0
+
+    while (slow < arr.length && fast < arr.length) {
+
+      while (arr(slow) == ' ') {
+        slow += 1
+      }
+
+      fast = slow
+
+      while (fast < arr.length && arr(fast) != ' ') {
+        println(s"fast = ${fast}")
+        fast += 1
+      }
+
+      println(s" slow = ${slow} and fast = ${fast}")
+
+      var swap = fast - 1
+      println(s" slow = ${slow} and fast = ${fast} and swap = ${swap}")
+      while (slow < swap) {
+        println(s" slow = ${slow} and fast = ${fast} and swap = ${swap}")
+        val tmp = arr(slow)
+        arr(slow) = arr(swap)
+        arr(swap) = tmp
+        slow += 1
+        swap -= 1
+      }
+      slow = fast
+    }
+    arr.mkString
+  }
+}
+
+
+//runtime:N/A
+//memory:N/A
+//total_testcases:30
+//total_correct:30
+//input_formatted:
+//expected_output:
+//code_output:null
+//runtime_error:null
+//last_testcase:
