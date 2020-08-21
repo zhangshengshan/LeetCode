@@ -56,18 +56,45 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a Node.
- * class Node(var _value: Int) {
- *   var value: Int = _value
- *   var next: Node = null
- *   var random: Node = null
- * }
- */
+//*
+// Definition for a Node.
+//class Node(var _value: Int) {
+//  var value: Int = _value
+//  var next: Node = null
+//  var random: Node = null
+//}
+
 
 object Solution {
-    def copyRandomList(head: Node): Node = {
-        
+  def copyRandomList(head: Node): Node = {
+    if (head == null) return null
+    val newHead = new Node(Int.MaxValue)
+    var ptr = head
+    while (ptr != null) {
+      val toBeAdd = new Node(ptr.value)
+      toBeAdd.next = ptr.next
+      ptr.next = toBeAdd
+      ptr = ptr.next.next
     }
+    ptr = head
+    while (ptr != null ) {
+      if(ptr.random != null){
+        ptr.next.random = ptr.random.next
+      }
+      ptr = ptr.next.next
+    }
+    ptr = head
+    while(ptr != null) {
+      ptr = ptr.next
+    }
+    ptr = head
+    newHead.next = ptr.next
+    while (ptr != null) {
+      val nextNode = ptr.next
+      ptr.next = nextNode.next
+      nextNode.next = if (ptr.next == null) null else ptr.next.next
+      ptr = ptr.next
+    }
+    return newHead.next
+  }
 }
-//leetcode submit region end(Prohibit modification and deletion)

@@ -1,0 +1,55 @@
+object Solution {
+
+  val a = new Node(1)
+  val b = new Node(2)
+  val c = new Node(3)
+  a.next = b 
+  b.next = c 
+  a.random = b 
+  b.random = a 
+  c.random = a 
+
+  def copyRandomList(head: Node): Node = {
+    if (head == null) return null
+    val newHead = new Node(Int.MaxValue)
+    var ptr = head
+    while (ptr != null) {
+      val toBeAdd = new Node(ptr.value)
+      toBeAdd.next = ptr.next
+      ptr.next = toBeAdd
+      ptr = ptr.next.next
+    }
+
+    ptr = head
+    while (ptr != null && ptr.random != null) {
+      ptr.next.random = ptr.random.next
+      ptr = ptr.next.next
+    }
+
+    ptr = head 
+
+    while(ptr != null) {
+      println(s"ptr.value = ${ptr.value}")
+      ptr = ptr.next
+    }
+
+    println("111111111111111")
+    ptr = head 
+    newHead.next = ptr.next
+
+    while (ptr != null) {
+      //println(ptr.value)
+      val nextNode = ptr.next
+      ptr.next = nextNode.next
+      nextNode.next = if (ptr.next == null) null else ptr.next.next
+      ptr = ptr.next
+    }
+    return newHead.next
+  }
+}
+
+//total_testcases:18
+//total_correct:6
+//input_formatted:[[7,null],[13,0],[11,4],[10,2],[1,0]]
+//expected_output:[[7,null],[13,0],[11,4],[10,2],[1,0]]
+//code_output:[[7,null],[13,null],[11,null],[10,null],[1,null]]

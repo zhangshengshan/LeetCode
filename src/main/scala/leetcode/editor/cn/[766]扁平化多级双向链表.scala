@@ -92,9 +92,159 @@
  * }
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 object Solution {
-    def flatten(head: Node): Node = {
-    	
+  case class HeadAndTail(head:Node, tail:Node)
+
+  def dfs(node: Node):HeadAndTail = {
+
+    if(node == null) return HeadAndTail(null, null)
+
+    val left = dfs(node.child)
+    val right = dfs(node.next)
+
+    node.child = null
+    if(left.head == null && right.head == null) {
+
+      return HeadAndTail(node, node)
+
+    }else if(left.head == null && right.head != null){
+
+      node.next = right.head 
+      right.head.prev = node
+      return HeadAndTail(node, right.tail)
+
+    }else if(left.head != null && right.head == null){
+
+      node.next = left.head
+      left.head.prev = node
+      return HeadAndTail(node, left.tail)
+
+    }else if(left.head != null && right.head != null){
+
+      node.next = left.head
+      left.head.prev = node 
+      left.tail.next = right.head 
+      right.head.prev = left.tail
+      return HeadAndTail(node, right.tail)
+
     }
+    return null
+  }
+  def flatten(head: Node): Node = {
+    val ret = dfs(head)
+
+
+    var tmp = ret.head
+    ret.head.prev = null
+    ret.tail.next = null
+
+    while(tmp!= null){
+      println("=========================")
+      println(s" value is ${tmp.value}")
+      if(tmp.prev != null) println(s" prev value is ${tmp.prev.value}")
+      if(tmp.next != null) println(s" next value is ${tmp.next.value}")
+      tmp = tmp.next
+    }
+    return ret.head
+  }
 }
-//leetcode submit region end(Prohibit modification and deletion)

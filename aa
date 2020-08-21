@@ -1,0 +1,28 @@
+val obj = new MyLinkedList()
+obj.addAtHead(2)
+obj.deleteAtIndex(1)
+obj.addAtHead(2)
+obj.addAtHead(7)
+obj.addAtHead(3)
+obj.addAtHead(2)
+obj.addAtHead(5)
+obj.addAtTail(5)
+obj.get(5)
+obj.deleteAtIndex(6)
+obj.deleteAtIndex(4)
+
+
+MyLinkedList      
+addAtHead(2)
+deleteAtIndex(1)
+addAtHead(2)
+addAtHead(7)
+addAtHead(3)
+addAtHead(2)
+addAtHead(5)
+addAtTail(5)
+get(5)
+deleteAtIndex(6)
+deleteAtIndex(4)
+
+5 2 3 7 2 5

@@ -18,21 +18,141 @@
 //向右旋转 2 步: 1->2->0->NULL
 //向右旋转 3 步: 0->1->2->NULL
 //向右旋转 4 步: 2->0->1->NULL 
-// Related Topics 链表 双指针 
-// 👍 308 👎 0
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * class ListNode(var _x: Int = 0) {
- *   var next: ListNode = null
- *   var x: Int = _x
- * }
- */
+// Definition for singly-linked list.
+// class ListNode(var _x: Int = 0) {
+//   var next: ListNode = null
+//   var x: Int = _x
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 object Solution {
-    def rotateRight(head: ListNode, k: Int): ListNode = {
+  def rotateRight(head: ListNode, k: Int): ListNode = {
 
+    if(head == null) return head
+    var fast = head 
+    var cnt = k 
+
+    while( cnt > 0 ){
+      if( fast.next == null ){
+        fast = head
+      }else{
+        fast = fast.next
+      }
+      cnt -= 1
     }
+
+    var slow = head 
+    while(fast.next != null) {
+      fast = fast.next 
+      slow = slow.next
+    }
+
+    fast.next = head 
+
+    val newHead = slow.next
+    slow.next = null
+
+    return newHead
+  }
 }
-//leetcode submit region end(Prohibit modification and deletion)
